@@ -1,3 +1,4 @@
+
 import { get, ref } from 'firebase/database'
 import { firebaseDatabase } from './firebaseConfig' // Ensure the path is correct
 
