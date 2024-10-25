@@ -31,7 +31,8 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <h3>Blue Print</h3>
+      <img src={require('../assets/icons/Inspectra 1.png')} style={{width: '50px', margin: "10px"}} alt='inspectra logo'/>
+        <h3>Inspectra</h3>
         {/* <CIcon className="sidebar-brand-full" icon={logoNegative} height={135} /> */}
         {/* <CIcon className="sidebar-brand-narrow" icon={sygnet} height={135} /> */}
       </CSidebarBrand>
