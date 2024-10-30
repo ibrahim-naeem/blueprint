@@ -67,7 +67,7 @@ const Dashboard = () => {
     { title: 'Active Users', value: '78', percent: 60, color: 'warning' },
     {
       title: "Compeleted Assessment's",
-      value: result?.assessments?.length,
+      value: surveys.length,
       percent: 80,
       color: 'danger',
     },
