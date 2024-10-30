@@ -224,7 +224,13 @@ const Dashboard = () => {
                     <CTableDataCell>
                       <div className="clearfix">
                         <div className="float-start">
-                          <strong>VX HQ ISL</strong>
+                        <strong>
+                          {survey.location 
+                            ? survey.location.length > 10 
+                              ? `${survey.location.slice(0, 25)} ...` 
+                              : survey.location 
+                            : 'VX HQ ISL'}
+                        </strong>
                         </div>
                         <div className="float-end">
                           {/* <small className="text-medium-emphasis">{item.usage.period}</small> */}
