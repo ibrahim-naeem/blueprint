@@ -453,39 +453,6 @@ const Dashboard = () => {
           </CCard>
         </CCol>
       </CRow>
-      <CRow>
-        <CCol xs>
-          <CCard className="mb-4">
-            <CCardHeader>Spaces Info</CCardHeader>
-            <CCardBody>
-              <CRow>
-                <CCol xs={12} md={6} xl={12}>
-                  <CRow>
-                    <CCol sm={4}>
-                      <div className="border-start border-start-4 border-start-info py-1 px-3">
-                        <div className="text-medium-emphasis small">Buildings</div>
-                        <div className="fs-5 fw-semibold">43</div>
-                      </div>
-                    </CCol>
-                    <CCol sm={4}>
-                      <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small"> Region</div>
-                        <div className="fs-5 fw-semibold">17</div>
-                      </div>
-                    </CCol>
-                    <CCol sm={4}>
-                      <div className="border-start border-start-4 border-start-info py-1 px-3">
-                        <div className="text-medium-emphasis small">Campus</div>
-                        <div className="fs-5 fw-semibold">83</div>
-                      </div>
-                    </CCol>
-                  </CRow>
-                </CCol>
-              </CRow>
-            </CCardBody>
-          </CCard>
-        </CCol>
-      </CRow>
     </>
   )
 }
