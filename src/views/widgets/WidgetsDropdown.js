@@ -1,5 +1,4 @@
-
-import React from 'react'
+import React from "react";
 import {
   CRow,
   CCol,
@@ -8,17 +7,17 @@ import {
   CDropdownItem,
   CDropdownToggle,
   CWidgetStatsA,
-} from '@coreui/react'
-import { getStyle } from '@coreui/utils'
-import { CChartBar, CChartLine } from '@coreui/react-chartjs'
-import CIcon from '@coreui/icons-react'
-import { cilArrowBottom, cilArrowTop, cilOptions } from '@coreui/icons'
+} from "@coreui/react";
+import { getStyle } from "@coreui/utils";
+import { CChartBar, CChartLine } from "@coreui/react-chartjs";
+import CIcon from "@coreui/icons-react";
+import { cilArrowBottom, cilArrowTop, cilOptions } from "@coreui/icons";
 
 /* eslint-disable react/prop-types */
 const WidgetsDropdown = ({ data }) => {
   /* eslint-disable react/prop-types */
-  const assessments = data?.length || 12
-  const spaces = data?.spaces?.length || 11
+  const assessments = data?.length || 12;
+  const spaces = data?.spaces?.length || 11;
 
   return (
     <CRow>
@@ -37,8 +36,15 @@ const WidgetsDropdown = ({ data }) => {
           title="Users"
           action={
             <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
+              <CDropdownToggle
+                color="transparent"
+                caret={false}
+                className="p-0"
+              >
+                <CIcon
+                  icon={cilOptions}
+                  className="text-high-emphasis-inverse"
+                />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -51,15 +57,23 @@ const WidgetsDropdown = ({ data }) => {
           chart={
             <CChartLine
               className="mt-3 mx-3"
-              style={{ height: '70px' }}
+              style={{ height: "70px" }}
               data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: [
+                  "January",
+                  "February",
+                  "March",
+                  "April",
+                  "May",
+                  "June",
+                  "July",
+                ],
                 datasets: [
                   {
-                    label: 'Users',
-                    backgroundColor: 'transparent',
-                    borderColor: 'rgba(255,255,255,.55)',
-                    pointBackgroundColor: getStyle('--cui-primary'),
+                    label: "Users",
+                    backgroundColor: "transparent",
+                    borderColor: "rgba(255,255,255,.55)",
+                    pointBackgroundColor: getStyle("--cui-primary"),
                     data: [40, 45, 50, 55, 65, 75, 85],
                   },
                 ],
@@ -124,8 +138,15 @@ const WidgetsDropdown = ({ data }) => {
           title="Assessment's"
           action={
             <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
+              <CDropdownToggle
+                color="transparent"
+                caret={false}
+                className="p-0"
+              >
+                <CIcon
+                  icon={cilOptions}
+                  className="text-high-emphasis-inverse"
+                />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -138,15 +159,23 @@ const WidgetsDropdown = ({ data }) => {
           chart={
             <CChartLine
               className="mt-3 mx-3"
-              style={{ height: '70px' }}
+              style={{ height: "70px" }}
               data={{
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                labels: [
+                  "January",
+                  "February",
+                  "March",
+                  "April",
+                  "May",
+                  "June",
+                  "July",
+                ],
                 datasets: [
                   {
                     label: "Assessment's",
-                    backgroundColor: 'transparent',
-                    borderColor: 'rgba(255,255,255,.55)',
-                    pointBackgroundColor: getStyle('--cui-info'),
+                    backgroundColor: "transparent",
+                    borderColor: "rgba(255,255,255,.55)",
+                    pointBackgroundColor: getStyle("--cui-info"),
                     data: [5, 10, 15, 20, 25, 30, 35],
                   },
                 ],
@@ -210,8 +239,15 @@ const WidgetsDropdown = ({ data }) => {
           title="Spaces"
           action={
             <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
+              <CDropdownToggle
+                color="transparent"
+                caret={false}
+                className="p-0"
+              >
+                <CIcon
+                  icon={cilOptions}
+                  className="text-high-emphasis-inverse"
+                />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -224,14 +260,14 @@ const WidgetsDropdown = ({ data }) => {
           chart={
             <CChartLine
               className="mt-3"
-              style={{ height: '70px' }}
+              style={{ height: "70px" }}
               data={{
-                labels: ['January', 'March', 'July'],
+                labels: ["January", "March", "July"],
                 datasets: [
                   {
                     label: "Building's, Region, Campus",
-                    backgroundColor: 'rgba(255,255,255,.2)',
-                    borderColor: 'rgba(255,255,255,.55)',
+                    backgroundColor: "rgba(255,255,255,.2)",
+                    borderColor: "rgba(255,255,255,.55)",
                     data: [1, 2, 3],
                     fill: true,
                   },
@@ -272,19 +308,19 @@ const WidgetsDropdown = ({ data }) => {
         <CWidgetStatsA
           className="mb-4"
           color="danger"
-          value={
-            <>
-              3
-              {/* <span className="fs-6 fw-normal">
-                (-23.6% <CIcon icon={cilArrowBottom} />)
-              </span> */}
-            </>
-          }
+          value={<>329</>}
           title="Assets"
           action={
             <CDropdown alignment="end">
-              <CDropdownToggle color="transparent" caret={false} className="p-0">
-                <CIcon icon={cilOptions} className="text-high-emphasis-inverse" />
+              <CDropdownToggle
+                color="transparent"
+                caret={false}
+                className="p-0"
+              >
+                <CIcon
+                  icon={cilOptions}
+                  className="text-high-emphasis-inverse"
+                />
               </CDropdownToggle>
               <CDropdownMenu>
                 <CDropdownItem>Action</CDropdownItem>
@@ -297,14 +333,14 @@ const WidgetsDropdown = ({ data }) => {
           chart={
             <CChartBar
               className="mt-3 mx-3"
-              style={{ height: '70px' }}
+              style={{ height: "70px" }}
               data={{
-                labels: ['January', 'February', 'March'],
+                labels: ["January", "February", "March"],
                 datasets: [
                   {
                     label: "Video's, Audio's, Note's",
-                    backgroundColor: 'rgba(255,255,255,.2)',
-                    borderColor: 'rgba(255,255,255,.55)',
+                    backgroundColor: "rgba(255,255,255,.2)",
+                    borderColor: "rgba(255,255,255,.55)",
                     data: [3, 3, 3],
                     barPercentage: 0.6,
                   },
@@ -344,7 +380,7 @@ const WidgetsDropdown = ({ data }) => {
         />
       </CCol>
     </CRow>
-  )
-}
+  );
+};
 
-export default WidgetsDropdown
+export default WidgetsDropdown;

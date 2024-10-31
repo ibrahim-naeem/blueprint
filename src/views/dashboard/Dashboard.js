@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
 import {
   CAvatar,
@@ -18,10 +17,10 @@ import {
   CTableHead,
   CTableHeaderCell,
   CTableRow,
-} from '@coreui/react'
-import { CChartLine } from '@coreui/react-chartjs'
-import { getStyle, hexToRgba } from '@coreui/utils'
-import CIcon from '@coreui/icons-react'
+} from "@coreui/react";
+import { CChartLine } from "@coreui/react-chartjs";
+import { getStyle, hexToRgba } from "@coreui/utils";
+import CIcon from "@coreui/icons-react";
 import {
   cibCcAmex,
   cibCcApplePay,
@@ -43,142 +42,148 @@ import {
   cilPeople,
   cilUser,
   cilUserFemale,
-} from '@coreui/icons'
+} from "@coreui/icons";
 
-import avatar1 from 'src/assets/images/avatars/1.jpg'
-import avatar2 from 'src/assets/images/avatars/2.jpg'
-import avatar3 from 'src/assets/images/avatars/3.jpg'
-import avatar4 from 'src/assets/images/avatars/4.jpg'
-import avatar5 from 'src/assets/images/avatars/5.jpg'
-import avatar6 from 'src/assets/images/avatars/6.jpg'
-import WidgetsBrand from '../widgets/WidgetsBrand'
-import WidgetsDropdown from '../widgets/WidgetsDropdown'
-import { fetchData } from '../../firebaseUtils'
+import avatar1 from "src/assets/images/avatars/1.jpg";
+import avatar2 from "src/assets/images/avatars/2.jpg";
+import avatar3 from "src/assets/images/avatars/3.jpg";
+import avatar4 from "src/assets/images/avatars/4.jpg";
+import avatar5 from "src/assets/images/avatars/5.jpg";
+import avatar6 from "src/assets/images/avatars/6.jpg";
+import WidgetsBrand from "../widgets/WidgetsBrand";
+import WidgetsDropdown from "../widgets/WidgetsDropdown";
+import { fetchData } from "../../firebaseUtils";
 const Dashboard = () => {
-  const [result, setResult] = useState([])
+  const [result, setResult] = useState([]);
   const [surveys, setSurveys] = useState([]); // State to hold the surveys data
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
-  const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
+  const random = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1) + min);
 
   const progressExample = [
-    { title: 'Old Users', value: '40', percent: 40, color: 'success' },
-    { title: 'New Users', value: '45', percent: 20, color: 'info' },
-    { title: 'Active Users', value: '78', percent: 60, color: 'warning' },
+    { title: "Old Users", value: "40", percent: 40, color: "success" },
+    { title: "New Users", value: "45", percent: 20, color: "info" },
+    { title: "Active Users", value: "78", percent: 60, color: "warning" },
     {
-      title: "Compeleted Assessment's",
+      title: "Completed Assessment's",
       value: surveys.length,
       percent: 80,
-      color: 'danger',
+      color: "danger",
     },
-    { title: "Active Assessment's", value: '5', percent: 40.15, color: 'primary' },
-  ]
+    {
+      title: "Active Assessment's",
+      value: "5",
+      percent: 40.15,
+      color: "primary",
+    },
+  ];
 
   const progressGroupExample1 = [
-    { title: 'January', value1: 34, value2: 78, value3: 10, value4: 19 },
-    { title: 'February', value1: 56, value2: 24, value3: 13, value4: 90 },
-    { title: 'March', value1: 12, value2: 67, value3: 56, value4: 14 },
-    { title: 'April', value1: 43, value2: 91, value3: 12, value4: 47 },
-    { title: 'May', value1: 22, value2: 73, value3: 56, value4: 94 },
-    { title: 'June', value1: 53, value2: 82, value3: 10, value4: 19 },
-    { title: 'July', value1: 9, value2: 69, value3: 43, value4: 11 },
-  ]
+    { title: "January", value1: 34, value2: 78, value3: 10, value4: 19 },
+    { title: "February", value1: 56, value2: 24, value3: 13, value4: 90 },
+    { title: "March", value1: 12, value2: 67, value3: 56, value4: 14 },
+    { title: "April", value1: 43, value2: 91, value3: 12, value4: 47 },
+    { title: "May", value1: 22, value2: 73, value3: 56, value4: 94 },
+    { title: "June", value1: 53, value2: 82, value3: 10, value4: 19 },
+    { title: "July", value1: 9, value2: 69, value3: 43, value4: 11 },
+  ];
 
   const progressGroupExample2 = [
-    { title: 'Male', icon: cilUser, value: 53 },
-    { title: 'Female', icon: cilUserFemale, value: 43 },
-  ]
+    { title: "Male", icon: cilUser, value: 53 },
+    { title: "Female", icon: cilUserFemale, value: 43 },
+  ];
 
   const progressGroupExample3 = [
-    { title: 'Organic Search', icon: cibGoogle, percent: 56, value: '191,235' },
-    { title: 'Facebook', icon: cibFacebook, percent: 15, value: '51,223' },
-    { title: 'Twitter', icon: cibTwitter, percent: 11, value: '37,564' },
-    { title: 'LinkedIn', icon: cibLinkedin, percent: 8, value: '27,319' },
-  ]
+    { title: "Organic Search", icon: cibGoogle, percent: 56, value: "191,235" },
+    { title: "Facebook", icon: cibFacebook, percent: 15, value: "51,223" },
+    { title: "Twitter", icon: cibTwitter, percent: 11, value: "37,564" },
+    { title: "LinkedIn", icon: cibLinkedin, percent: 8, value: "27,319" },
+  ];
 
   const tableExample = [
     {
-      avatar: { src: avatar1, status: 'success' },
+      avatar: { src: avatar1, status: "success" },
       user: {
-        name: 'Ground floor - meeting room',
+        name: "Ground floor - meeting room",
         new: true,
-        registered: 'Jan 1, 2021',
+        registered: "Jan 1, 2021",
       },
-      country: { name: 'Discovery' },
+      country: { name: "Discovery" },
       usage: {
-        value: 'Region Alpha',
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'success',
+        value: "Region Alpha",
+        period: "Jun 11, 2021 - Jul 10, 2021",
+        color: "success",
       },
-      payment: { name: 'Mastercard', icon: cibCcMastercard },
-      activity: 'Compeleted',
+      payment: { name: "Mastercard", icon: cibCcMastercard },
+      activity: "Completed",
     },
     {
-      avatar: { src: avatar2, status: 'danger' },
+      avatar: { src: avatar2, status: "danger" },
       user: {
-        name: 'Pinwheel Meeting Room',
+        name: "Pinwheel Meeting Room",
         new: false,
-        registered: 'Jan 1, 2021',
+        registered: "Jan 1, 2021",
       },
-      country: { name: 'Discovery' },
+      country: { name: "Discovery" },
       usage: {
-        value: 'Campus Beta',
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'info',
+        value: "Campus Beta",
+        period: "Jun 11, 2021 - Jul 10, 2021",
+        color: "info",
       },
-      payment: { name: 'Visa', icon: cibCcVisa },
-      activity: 'In-progress',
+      payment: { name: "Visa", icon: cibCcVisa },
+      activity: "In-progress",
     },
     {
-      avatar: { src: avatar3, status: 'warning' },
-      user: { name: 'Meeting room B', new: true, registered: 'Jan 1, 2021' },
-      country: { name: 'Discovery' },
+      avatar: { src: avatar3, status: "warning" },
+      user: { name: "Meeting room B", new: true, registered: "Jan 1, 2021" },
+      country: { name: "Discovery" },
       usage: {
-        value: 'Campus Beta',
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'warning',
+        value: "Campus Beta",
+        period: "Jun 11, 2021 - Jul 10, 2021",
+        color: "warning",
       },
-      payment: { name: 'Stripe', icon: cibCcStripe },
-      activity: 'Compeleted',
+      payment: { name: "Stripe", icon: cibCcStripe },
+      activity: "Completed",
     },
     {
-      avatar: { src: avatar4, status: 'secondary' },
-      user: { name: 'Moonshot Lab', new: true, registered: 'Jan 1, 2021' },
-      country: { name: 'Discovery' },
+      avatar: { src: avatar4, status: "secondary" },
+      user: { name: "Moonshot Lab", new: true, registered: "Jan 1, 2021" },
+      country: { name: "Discovery" },
       usage: {
-        value: 'Bulding Alpha',
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'danger',
+        value: "Bulding Alpha",
+        period: "Jun 11, 2021 - Jul 10, 2021",
+        color: "danger",
       },
-      payment: { name: 'PayPal', icon: cibCcPaypal },
-      activity: 'Compeleted',
+      payment: { name: "PayPal", icon: cibCcPaypal },
+      activity: "Completed",
     },
     {
-      avatar: { src: avatar5, status: 'success' },
+      avatar: { src: avatar5, status: "success" },
       user: {
-        name: 'Vic office',
+        name: "Vic office",
         new: true,
         // registered: 'Jan 1, 2021',
       },
-      country: { name: 'Discovery' },
+      country: { name: "Discovery" },
       usage: {
-        value: 'Campus Beta',
-        period: 'Jun 11, 2021 - Jul 10, 2021',
-        color: 'primary',
+        value: "Campus Beta",
+        period: "Jun 11, 2021 - Jul 10, 2021",
+        color: "primary",
       },
-      payment: { name: 'Google Wallet', icon: cibCcApplePay },
-      activity: 'In-progress',
+      payment: { name: "Google Wallet", icon: cibCcApplePay },
+      activity: "In-progress",
     },
-  ]
+  ];
 
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await fetchData('surveys');
+        const data = await fetchData("surveys");
         setSurveys(data);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching surveys:', error);
+        console.error("Error fetching surveys:", error);
         setLoading(false);
       }
     };
@@ -189,11 +194,10 @@ const Dashboard = () => {
   if (loading) {
     return <div>Loading surveys...</div>;
   }
-  
 
   return (
     <>
-    <CRow>
+      <CRow>
         <CCol xs>
           <CCard className="mb-4">
             {/* xeadereader> */}
@@ -202,7 +206,9 @@ const Dashboard = () => {
               <CTableHead color="light">
                 <CTableRow>
                   <CTableHeaderCell>Assessment name</CTableHeaderCell>
-                  <CTableHeaderCell className="text-center">Type</CTableHeaderCell>
+                  <CTableHeaderCell className="text-center">
+                    Type
+                  </CTableHeaderCell>
                   <CTableHeaderCell>Location</CTableHeaderCell>
                   <CTableHeaderCell>Created at</CTableHeaderCell>
                 </CTableRow>
@@ -219,18 +225,18 @@ const Dashboard = () => {
                     </CTableDataCell>
                     <CTableDataCell className="text-center">
                       {/* <CIcon size="xl" icon={item.country.name} title={item.country.name} /> */}
-                      <div>{survey?.type || 'Not Available'}</div>
+                      <div>{survey?.type || "Not Available"}</div>
                     </CTableDataCell>
                     <CTableDataCell>
                       <div className="clearfix">
                         <div className="float-start">
-                        <strong>
-                          {survey.location 
-                            ? survey.location.length > 10 
-                              ? `${survey.location.slice(0, 25)} ...` 
-                              : survey.location 
-                            : 'VX HQ ISL'}
-                        </strong>
+                          <strong>
+                            {survey.location
+                              ? survey.location.length > 10
+                                ? `${survey.location.slice(0, 25)} ...`
+                                : survey.location
+                              : "VX HQ ISL"}
+                          </strong>
                         </div>
                         <div className="float-end">
                           {/* <small className="text-medium-emphasis">{item.usage.period}</small> */}
@@ -241,7 +247,7 @@ const Dashboard = () => {
 
                     <CTableDataCell>
                       <div className="small text-medium-emphasis"></div>
-                      {survey?.createdAt || 'Not Available'}
+                      {survey?.createdAt || "Not Available"}
                     </CTableDataCell>
                   </CTableRow>
                 ))}
@@ -251,7 +257,7 @@ const Dashboard = () => {
           </CCard>
         </CCol>
       </CRow>
-      
+
       <WidgetsDropdown data={surveys} />
       <CCard className="mb-4">
         <CCardBody>
@@ -282,33 +288,41 @@ const Dashboard = () => {
           </CRow>
 
           <CChartLine
-            style={{ height: '300px', marginTop: '40px' }}
+            style={{ height: "300px", marginTop: "40px" }}
             data={{
-              labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+              labels: [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+              ],
               datasets: [
                 {
-                  label: 'Active Users',
-                  backgroundColor: hexToRgba(getStyle('--cui-warning'), 10),
-                  borderColor: getStyle('--cui-warning'),
-                  pointHoverBackgroundColor: getStyle('--cui-warning'),
+                  label: "Active Users",
+                  backgroundColor: hexToRgba(getStyle("--cui-warning"), 10),
+                  borderColor: getStyle("--cui-warning"),
+                  pointHoverBackgroundColor: getStyle("--cui-warning"),
                   borderWidth: 2,
                   data: [30, 50, 10, 65, 77, 45, 83],
                   fill: true,
                 },
                 {
-                  label: 'New Users',
-                  backgroundColor: hexToRgba(getStyle('--cui-info'), 10),
-                  borderColor: getStyle('--cui-info'),
-                  pointHoverBackgroundColor: getStyle('--cui-info'),
+                  label: "New Users",
+                  backgroundColor: hexToRgba(getStyle("--cui-info"), 10),
+                  borderColor: getStyle("--cui-info"),
+                  pointHoverBackgroundColor: getStyle("--cui-info"),
                   borderWidth: 2,
                   data: [10, 5, 15, 20, 5, 25, 13],
                   fill: true,
                 },
                 {
                   label: " Assessment's",
-                  backgroundColor: hexToRgba(getStyle('--cui-danger'), 10),
-                  borderColor: getStyle('--cui-danger'),
-                  pointHoverBackgroundColor: getStyle('--cui-danger'),
+                  backgroundColor: hexToRgba(getStyle("--cui-danger"), 10),
+                  borderColor: getStyle("--cui-danger"),
+                  pointHoverBackgroundColor: getStyle("--cui-danger"),
                   borderWidth: 2,
                   data: [11, 5, 4, 17, 21, 2, 32],
                   fill: true,
@@ -357,7 +371,12 @@ const Dashboard = () => {
               <CCol className="mb-sm-2 mb-0" key={index}>
                 <div className="text-medium-emphasis">{item.title}</div>
                 <strong>{item.value}</strong>
-                <CProgress thin className="mt-2" color={item.color} value={item.percent} />
+                <CProgress
+                  thin
+                  className="mt-2"
+                  color={item.color}
+                  value={item.percent}
+                />
               </CCol>
             ))}
           </CRow>
@@ -375,20 +394,25 @@ const Dashboard = () => {
                   <CRow>
                     <CCol sm={4}>
                       <div className="border-start border-start-4 border-start-info py-1 px-3">
-                        <div className="text-medium-emphasis small">Buildings</div>
-                        <div className="fs-5 fw-semibold">43</div>
+                        <div className="text-medium-emphasis small">
+                          Buildings
+                        </div>
+                        <div className="fs-5 fw-semibold">3</div>
                       </div>
                     </CCol>
                     <CCol sm={4}>
                       <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small"> Region</div>
-                        <div className="fs-5 fw-semibold">17</div>
+                        <div className="text-medium-emphasis small">
+                          {" "}
+                          Region
+                        </div>
+                        <div className="fs-5 fw-semibold">3</div>
                       </div>
                     </CCol>
                     <CCol sm={4}>
                       <div className="border-start border-start-4 border-start-info py-1 px-3">
                         <div className="text-medium-emphasis small">Campus</div>
-                        <div className="fs-5 fw-semibold">83</div>
+                        <div className="fs-5 fw-semibold">5</div>
                       </div>
                     </CCol>
                   </CRow>
@@ -415,14 +439,19 @@ const Dashboard = () => {
                     </CCol>
                     <CCol sm={3}>
                       <div className="border-start border-start-4 border-start-danger py-1 px-3 mb-3">
-                        <div className="text-medium-emphasis small"> Audios</div>
+                        <div className="text-medium-emphasis small">
+                          {" "}
+                          Audios
+                        </div>
                         <div className="fs-5 fw-semibold">173</div>
                       </div>
                     </CCol>
                     <CCol sm={3}>
                       <div className="border-start border-start-4 border-start-warning py-1 px-3 mb-3">
                         <div className="text-medium-emphasis small">Notes</div>
-                        <div className="fs-5 fw-semibold">{result?.notes?.length}</div>
+                        <div className="fs-5 fw-semibold">
+                          {result?.notes?.length}
+                        </div>
                       </div>
                     </CCol>
                     <CCol sm={3}>
@@ -437,7 +466,9 @@ const Dashboard = () => {
                   {progressGroupExample1.map((item, index) => (
                     <div className="progress-group mb-4" key={index}>
                       <div className="progress-group-prepend">
-                        <span className="text-medium-emphasis small">{item.title}</span>
+                        <span className="text-medium-emphasis small">
+                          {item.title}
+                        </span>
                       </div>
                       <div className="progress-group-bars">
                         <CProgress thin color="info" value={item.value1} />
@@ -454,7 +485,7 @@ const Dashboard = () => {
         </CCol>
       </CRow>
     </>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
